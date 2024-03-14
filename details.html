@@ -29,6 +29,18 @@
         body {
           background: rgba(0, 0, 0, 1);
         }
+        #img img {
+          max-width: 500px;
+        }
+        @media screen and (max-width: 500px) {
+          #img img {
+            max-width: 300px;
+          }
+          p {
+            font-size: 12px;
+          }
+        }
+
       </style>
 </head>
 
@@ -61,7 +73,7 @@
     
         $('#title').html(page_name);
         $('#img').html(`
-            <img src="src/images/${page_name}.jpg" alt="Image" crossorigin="anonymous" width="500">
+            <img src="src/images/${page_name}.jpg" alt="Image" crossorigin="anonymous">
         `);
 
         $('#desc').html('');

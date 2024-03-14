@@ -1,0 +1,76 @@
+<head>
+    <!--META TAGS-->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='manifest' href='manifest.json' crossorigin="anonymous">
+    <title>GYMIE</title>
+
+    <!--STYLES, BOOTSTRAP, ICONS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+
+    <!--PROVIDED SCRIPTS-->
+    <script src="src/js/promise.js"></script>
+    <script src="src/js/fetch.js"></script>
+    <script src="src/js/idb.js"></script>
+    <script src="src/js/utility.js"></script>
+
+    <!--CUSTOM SCRIPT FOR ALL APPS-->
+    <script src="src/js/feed.js"></script>
+    <script src="src/js/app.js"></script>
+
+    <style>
+        body {
+          background: rgba(0, 0, 0, 1);
+        }
+      </style>
+</head>
+
+<body>
+    <div class="container details-section text-white mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+          <h2 class="mb-5" id="title"></h2>
+          <div id="img">
+            <img src="https://www.anytimefitness.com/wp-content/uploads/2024/01/AF-HERO_BenchPress-1024x683.jpg" alt="">
+          </div>
+          <p class="mt-5" id="desc"></p>
+          <a
+            href="index.html"
+            class="btn btn-sm btn-secondary close-details-btn mb-5"
+          >
+            Close
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+<script>
+    (function () {
+        const current_page = sessionStorage['current_page'];
+        const the_detail = JSON.parse(sessionStorage.getItem(current_page));
+        const page_name = parse_snakecase(current_page)
+        const workout_desc = the_detail.desc.split("\\n");
+    
+        $('#title').html(page_name);
+        $('#img').html(`
+            <img src="src/images/${page_name}.jpg" alt="Image" crossorigin="anonymous" width="500">
+        `);
+
+        $('#desc').html('');
+        workout_desc.forEach((desc) => {
+            $('#desc').append(`
+                <p>${desc}</p>
+            `);
+        })
+    })();
+</script>
+
+</html>
